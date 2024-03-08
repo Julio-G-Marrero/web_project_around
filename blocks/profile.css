@@ -1,0 +1,24 @@
+.profile {
+}
+.profile__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile__info {
+  width: 440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile__box {
+  display: flex;
+  column-gap: 40px;
+}
+.profile__containter {
+  display: flex;
+  column-gap: 20px;
+}
+.profile__name {
+  margin: 0;
+}

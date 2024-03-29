@@ -154,9 +154,17 @@
       <section class="modal">
         <h2 class="modal__title">Editar Perfil</h2>
         <form class="modal__form">
-          <input class="modal__input" type="text" placeholder="Nombre" />
-          <input class="modal__input" type="text" placeholder="Apellido" />
-          <button class="modal__button" type="button">Guardar</button>
+          <input
+            class="modal__input modal__input_name"
+            type="text"
+            placeholder="Nombre"
+          />
+          <input
+            type="text"
+            placeholder="Profesion"
+            class="modal__input modal__input_job"
+          />
+          <button class="modal__button" type="submit">Guardar</button>
         </form>
         <img
           class="modal__close-icon modal__close-perfil"
@@ -175,7 +183,7 @@
             type="text"
             placeholder="Enlace a imagen"
           />
-          <button class="modal__button" type="button">Crear</button>
+          <button class="modal__button" type="submit">Crear</button>
         </form>
         <img
           class="modal__close-icon modal__close-place"

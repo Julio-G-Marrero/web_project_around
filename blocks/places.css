@@ -23,6 +23,7 @@
   position: relative;
 }
 .places__image {
+  width: 100%;
   max-width: 280px;
   height: 280px;
   object-fit: cover;
@@ -55,4 +56,15 @@
 .places__like {
   width: 20px;
   height: 20px;
+}
+.pointer {
+  cursor: pointer;
+}
+.like_active {
+  opacity: 1;
+  background: url(https://practicum-content.s3.us-west-1.amazonaws.com/web-code/dom/moved_heart-filled.svg)
+    center no-repeat;
+}
+.places__image:hover {
+  cursor: pointer;
 }

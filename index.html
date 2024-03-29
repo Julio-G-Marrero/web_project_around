@@ -40,114 +40,26 @@
     </section>
     <main class="places">
       <div class="places__elements">
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__1.jpg"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
+        <template id="cardElement">
+          <div class="places__element">
+            <div class="places__banner">
+              <img class="places__image" src="" alt="place image" />
+              <img
+                class="places__trash-icon pointer"
+                src="./images/Trash.svg"
+                alt="Trash svg"
+              />
+            </div>
+            <div class="places__info">
+              <h2 class="places__title"></h2>
+              <img
+                class="places__like pointer"
+                src="./images/like.svg"
+                alt="like svg"
+              />
+            </div>
           </div>
-          <div class="places__info">
-            <h2 class="places__title">Valle de Yosemite</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__2.png"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
-          </div>
-          <div class="places__info">
-            <h2 class="places__title">Arteaga</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__3.png"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
-          </div>
-          <div class="places__info">
-            <h2 class="places__title">San Antonio</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__4.png"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
-          </div>
-          <div class="places__info">
-            <h2 class="places__title">Tulum</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__1.jpg"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
-          </div>
-          <div class="places__info">
-            <h2 class="places__title">Valle de Yosemite</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
-        <div class="places__element">
-          <div class="places__banner">
-            <img
-              class="places__image"
-              src="./images/place__1.jpg"
-              alt="place image"
-            />
-            <img
-              class="places__trash-icon"
-              src="./images/Trash.svg"
-              alt="Trash svg"
-            />
-          </div>
-          <div class="places__info">
-            <h2 class="places__title">Valle de Yosemite</h2>
-            <img class="places__like" src="./images/like.svg" alt="like svg" />
-          </div>
-        </div>
+        </template>
       </div>
     </main>
     <div class="modal-perfil disabled">
@@ -177,9 +89,13 @@
       <section class="modal">
         <h2 class="modal__title">Nuevo Lugar</h2>
         <form class="modal__form">
-          <input class="modal__input" type="text" placeholder="Titulo" />
           <input
-            class="modal__input"
+            class="modal__input modal__input_title"
+            type="text"
+            placeholder="Titulo"
+          />
+          <input
+            class="modal__input modal__input_url"
             type="text"
             placeholder="Enlace a imagen"
           />
@@ -190,6 +106,17 @@
           src="./images/Close_Icon.png"
           alt="close icon"
         />
+      </section>
+    </div>
+    <div class="modal-img disabled">
+      <section class="modal__image-card">
+        <img class="modal__image-src" src="./images/place__2.png" alt="img" />
+        <img
+          class="modal__close-icon modal__close-image"
+          src="./images/Close_Icon.png"
+          alt="close icon"
+        />
+        <p class="modal__title-img"></p>
       </section>
     </div>
     <script src="./js/index.js"></script>

@@ -62,63 +62,57 @@
         </template>
       </div>
     </main>
-    <div class="modal-perfil disabled">
-      <section class="modal">
-        <h2 class="modal__title">Editar Perfil</h2>
-        <form class="modal__form">
-          <input
-            class="modal__input modal__input_name"
-            type="text"
-            placeholder="Nombre"
-          />
-          <input
-            type="text"
-            placeholder="Profesion"
-            class="modal__input modal__input_job"
-          />
-          <button class="modal__button" type="submit">Guardar</button>
-        </form>
-        <img
-          class="modal__close-icon modal__close-icon_perfil"
-          src="./images/Close_Icon.png"
-          alt="close icon"
+    <section class="modal modal-perfil disabled">
+      <h2 class="modal__title">Editar Perfil</h2>
+      <form class="modal__form">
+        <input
+          class="modal__input modal__input_name"
+          type="text"
+          placeholder="Nombre"
         />
-      </section>
-    </div>
-    <div class="modal-place disabled">
-      <section class="modal">
-        <h2 class="modal__title">Nuevo Lugar</h2>
-        <form class="modal__form">
-          <input
-            class="modal__input modal__input_title"
-            type="text"
-            placeholder="Titulo"
-          />
-          <input
-            class="modal__input modal__input_url"
-            type="text"
-            placeholder="Enlace a imagen"
-          />
-          <button class="modal__button" type="submit">Crear</button>
-        </form>
-        <img
-          class="modal__close-icon modal__close-icon_place"
-          src="./images/Close_Icon.png"
-          alt="close icon"
+        <input
+          type="text"
+          placeholder="Profesion"
+          class="modal__input modal__input_job"
         />
-      </section>
-    </div>
-    <div class="modal-img disabled">
-      <section class="modal__image-card">
-        <img class="modal__image_src" src="./images/place__2.png" alt="img" />
-        <img
-          class="modal__close-icon modal__close-icon_image"
-          src="./images/Close_Icon.png"
-          alt="close icon"
+        <button class="modal__button" type="submit">Guardar</button>
+      </form>
+      <img
+        class="modal__close-icon modal__close-icon_perfil"
+        src="./images/Close_Icon.png"
+        alt="close icon"
+      />
+    </section>
+    <section class="modal modal-place disabled">
+      <h2 class="modal__title">Nuevo Lugar</h2>
+      <form class="modal__form">
+        <input
+          class="modal__input modal__input_title"
+          type="text"
+          placeholder="Titulo"
         />
-        <p class="modal__title_img"></p>
-      </section>
-    </div>
+        <input
+          class="modal__input modal__input_url"
+          type="text"
+          placeholder="Enlace a imagen"
+        />
+        <button class="modal__button" type="submit">Crear</button>
+      </form>
+      <img
+        class="modal__close-icon modal__close-icon_place"
+        src="./images/Close_Icon.png"
+        alt="close icon"
+      />
+    </section>
+    <section class="modal__image-card modal-img disabled">
+      <img class="modal__image_src" src="./images/place__2.png" alt="img" />
+      <img
+        class="modal__close-icon modal__close-icon_image"
+        src="./images/Close_Icon.png"
+        alt="close icon"
+      />
+      <p class="modal__title_img"></p>
+    </section>
     <script src="./js/index.js"></script>
   </body>
 </html>

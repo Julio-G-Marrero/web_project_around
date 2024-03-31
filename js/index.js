@@ -3,9 +3,9 @@ const profileEdit = document.querySelector(".profile__button");
 const modalProfile = document.querySelector(".modal-perfil");
 const modalPlace = document.querySelector(".modal-place");
 const modalImage = document.querySelector(".modal-img");
-const modalCloseImage = document.querySelector(".modal__close-icon_image");
-const modalCloseProfile = document.querySelector(".modal__close-icon_perfil ");
-const modalClosePlace = document.querySelector(".modal__close-icon_place ");
+const modalCloseImage = document.querySelector(".modal-img__close");
+const modalCloseProfile = document.querySelector(".modal__close_icon_perfil ");
+const modalClosePlace = document.querySelector(".modal__close_icon_place ");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__rol");
 const nameInput = modalProfile.querySelector(".modal__input_name");
@@ -119,8 +119,8 @@ modalCloseImage.addEventListener("click", () => {
   mostrarModal(modalImage);
 });
 function openImgModal(img, title) {
-  const imgModal = document.querySelector(".modal__image_src");
-  const titleCard = document.querySelector(".modal__title_img");
+  const imgModal = document.querySelector(".modal-img__src");
+  const titleCard = document.querySelector(".modal-img__title");
   imgModal.src = img.src;
   titleCard.textContent = title.textContent;
   console.log(titleCard);

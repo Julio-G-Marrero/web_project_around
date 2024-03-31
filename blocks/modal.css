@@ -57,7 +57,7 @@
   border: 0;
   margin-top: 20px;
 }
-.modal__close_icon {
+.modal__close {
   position: absolute;
   top: -35px;
   right: -35px;
@@ -68,12 +68,12 @@
   right: -35px;
 }
 .modal-img__close:hover,
-.modal__close_icon:hover {
+.modal__close:hover {
   cursor: pointer;
 }
 .disabled {
   display: none;
 }
-.modal__close_icon:hover {
+.modal__close:hover {
   cursor: pointer;
 }

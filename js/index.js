@@ -3,7 +3,7 @@ const profileEdit = document.querySelector(".profile__button");
 const modalProfile = document.querySelector(".modal-perfil");
 const modalPlace = document.querySelector(".modal-place");
 const modalImage = document.querySelector(".modal-img");
-const modalCloseImage = document.querySelector(".modal__close-image");
+const modalCloseImage = document.querySelector(".modal__close_image");
 const modalCloseProfile = document.querySelector(".modal__close-perfil");
 const modalClosePlace = document.querySelector(".modal__close-place");
 const profileName = document.querySelector(".profile__name");
@@ -119,8 +119,8 @@ modalCloseImage.addEventListener("click", () => {
   mostrarModal(modalImage);
 });
 function openImgModal(img, title) {
-  const imgModal = document.querySelector(".modal__image-src");
-  const titleCard = document.querySelector(".modal__title-img");
+  const imgModal = document.querySelector(".modal__image_src");
+  const titleCard = document.querySelector(".modal__title_img");
   imgModal.src = img.src;
   titleCard.textContent = title.textContent;
   console.log(titleCard);

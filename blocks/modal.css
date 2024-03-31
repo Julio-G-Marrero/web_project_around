@@ -9,7 +9,7 @@
   padding: 15px 30px;
   font-family: "Inter";
 }
-.modal__imageCard {
+.modal__image-card {
   width: 430px;
   height: 60%;
   background-color: white;
@@ -48,7 +48,7 @@
   border: 0;
   margin-top: 20px;
 }
-.modal__closeIcon {
+.modal__close-icon {
   position: absolute;
   top: -35px;
   right: -35px;
@@ -56,6 +56,6 @@
 .disabled {
   display: none;
 }
-.modal__closeIcon:hover {
+.modal__close-icon:hover {
   cursor: pointer;
 }

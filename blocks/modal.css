@@ -48,7 +48,7 @@
   border: 0;
   margin-top: 20px;
 }
-.modal__close_icon {
+.modal__closeIcon {
   position: absolute;
   top: -35px;
   right: -35px;
@@ -56,6 +56,6 @@
 .disabled {
   display: none;
 }
-.modal__close_icon:hover {
+.modal__closeIcon:hover {
   cursor: pointer;
 }

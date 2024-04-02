@@ -13,6 +13,7 @@ const jobInput = modalProfile.querySelector(".modal__input_job");
 const inputNameCardPlace = document.querySelector(".modal__input_title");
 const inputUrlCardPlace = document.querySelector(".modal__input_url");
 const likeButtons = document.querySelectorAll(".places__like");
+const overlay = document.querySelector(".overlay");
 
 const initialCards = [
   {
@@ -49,11 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardElement = templateCard
       .querySelector(".places__element")
       .cloneNode(true);
-    let cardTitle = cardElement.querySelector(".places__title");
-    let cardImage = cardElement.querySelector(".places__image");
-    let likeButton = cardElement.querySelector(".places__like");
-    let imgCard = cardElement.querySelector(".places__image");
-    let trashButton = cardElement.querySelector(".places__trash-icon");
+    const cardTitle = cardElement.querySelector(".places__title");
+    const likeButton = cardElement.querySelector(".places__like");
+    const imgCard = cardElement.querySelector(".places__image");
+    const trashButton = cardElement.querySelector(".places__trash-icon");
 
     imgCard.addEventListener("click", () => {
       openImgModal(imgCard, cardTitle);
@@ -66,23 +66,25 @@ document.addEventListener("DOMContentLoaded", () => {
       listItem.remove();
     });
     cardTitle.textContent = element.name;
-    cardImage.src = element.link;
-
+    imgCard.src = element.link;
+    imgCard.alt = element.name;
     containerCards.append(cardElement);
   });
 });
 
 //Crear card
-function crearCard(title, urlImg) {
+function createCard(title, urlImg) {
   const cardElement = templateCard
     .querySelector(".places__element")
     .cloneNode(true);
-  let cardTitle = cardElement.querySelector(".places__title");
-  let cardImage = cardElement.querySelector(".places__image");
+  const cardTitle = cardElement.querySelector(".places__title");
+  const likeButton = cardElement.querySelector(".places__like");
+  const trashButton = cardElement.querySelector(".places__trash-icon");
+  const imgCard = cardElement.querySelector(".places__image");
+
+  imgCard.src = urlImg;
+  imgCard.alt = title;
   cardTitle.textContent = title;
-  let likeButton = cardElement.querySelector(".places__like");
-  let trashButton = cardElement.querySelector(".places__trash-icon");
-  let imgCard = cardElement.querySelector(".places__image");
 
   imgCard.addEventListener("click", () => {
     openImgModal(imgCard, cardTitle);
@@ -94,59 +96,64 @@ function crearCard(title, urlImg) {
   likeButton.addEventListener("click", (e) => {
     likeButton.classList.toggle("like_active");
   });
-  cardImage.src = urlImg;
 
   containerCards.prepend(cardElement);
 }
 
 //Modales
-function mostrarModal(modal) {
+function showModal(modal) {
   modal.classList.toggle("disabled");
-  console.log(modal);
+  overlay.style.display = "block";
 }
 profileEdit.addEventListener("click", () => {
-  mostrarModal(modalProfile);
+  showModal(modalProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 });
 modalClosePlace.addEventListener("click", () => {
-  mostrarModal(modalPlace);
+  showModal(modalPlace);
+  overlay.style.display = "none";
 });
 modalCloseProfile.addEventListener("click", () => {
-  mostrarModal(modalProfile);
+  showModal(modalProfile);
+  overlay.style.display = "none";
 });
 modalCloseImage.addEventListener("click", () => {
-  mostrarModal(modalImage);
+  showModal(modalImage);
+  overlay.style.display = "none";
 });
 function openImgModal(img, title) {
   const imgModal = document.querySelector(".modal-img__src");
   const titleCard = document.querySelector(".modal-img__title");
   imgModal.src = img.src;
   titleCard.textContent = title.textContent;
-  console.log(titleCard);
-  mostrarModal(modalImage);
+  showModal(modalImage);
 }
 
 profileAddButton.addEventListener("click", () => {
-  mostrarModal(modalPlace);
+  showModal(modalPlace);
 });
 
 //Modal Submit
 modalProfile.addEventListener("submit", (e) => {
   e.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  nameInput.value = "";
-  jobInput.value = "";
-  mostrarModal(modalProfile);
+  if (nameInput.value != "" && jobInput.value != "") {
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    nameInput.value = "";
+    jobInput.value = "";
+    showModal(modalProfile);
+  }
 });
 
 modalPlace.addEventListener("submit", (e) => {
   e.preventDefault();
-  crearCard(inputNameCardPlace.value, inputUrlCardPlace.value);
-  inputNameCardPlace.value = "";
-  inputUrlCardPlace.value = "";
-  mostrarModal(modalPlace);
+  if (inputNameCardPlace.value != "" && inputUrlCardPlace.value != "") {
+    createCard(inputNameCardPlace.value, inputUrlCardPlace.value);
+    inputNameCardPlace.value = "";
+    inputUrlCardPlace.value = "";
+    showModal(modalPlace);
+  }
 });
 
 //Eliminar Card

@@ -8,6 +8,7 @@
   left: 40%;
   padding: 15px 30px;
   font-family: "Inter";
+  z-index: 2;
 }
 .modal__img_card {
   width: 430px;
@@ -15,11 +16,13 @@
   background-color: white;
   border-radius: 10px;
   position: absolute;
+  z-index: 2;
   top: 30%;
   left: 40%;
 }
 .modal-img {
   width: 430px;
+  z-index: 2;
   height: 60%;
   background-color: white;
   border-radius: 10px;

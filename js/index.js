@@ -156,4 +156,72 @@ modalPlace.addEventListener("submit", (e) => {
   }
 });
 
-//Eliminar Card
+//validacion forms
+const showInputError = (formElement, inputElement, errorMessage) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("form__input_type_error");
+  console.log(`.${inputElement.id}-error`);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add("form__input-error_active");
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove("form__input_type_error");
+  errorElement.classList.remove("form__input-error_active");
+  errorElement.textContent = "";
+};
+
+const checkInputValidity = (formElement, inputElement) => {
+  if (!inputElement.validity.valid) {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
+  }
+};
+
+const setEventListeners = (formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(".form__input"));
+  inputList.forEach((inputElement) => {
+    inputElement.addEventListener("input", function () {
+      checkInputValidity(formElement, inputElement);
+    });
+  });
+};
+
+const enableValidation = () => {
+  const formList = Array.from(document.querySelectorAll(".form"));
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+    });
+    setEventListeners(formElement);
+  });
+};
+
+enableValidation();
+
+overlay.addEventListener("click", function () {
+  overlay.style.display = "none";
+  const modals = document.querySelectorAll(".modal");
+  const images = document.querySelectorAll(".modal-img");
+  images.forEach(function (img) {
+    img.classList.add("disabled");
+  });
+  modals.forEach(function (modal) {
+    modal.classList.add("disabled");
+  });
+});
+document.addEventListener("keydown", function (evt) {
+  if (evt.key === "Escape") {
+    const modals = document.querySelectorAll(".modal");
+    const images = document.querySelectorAll(".modal-img");
+    images.forEach(function (img) {
+      img.classList.add("disabled");
+    });
+    modals.forEach(function (modal) {
+      modal.classList.add("disabled");
+    });
+    overlay.style.display = "none";
+  }
+});

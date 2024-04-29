@@ -51,6 +51,7 @@
   box-sizing: border-box;
   border: 0;
   border-bottom: solid 1px #c4c4c4;
+  margin: 0;
 }
 .modal__button {
   width: 100%;

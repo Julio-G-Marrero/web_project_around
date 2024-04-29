@@ -64,17 +64,27 @@
     </main>
     <section class="modal modal-perfil disabled">
       <h2 class="modal__title">Editar Perfil</h2>
-      <form class="modal__form">
+      <form class="modal__form form" novalidate>
         <input
-          class="modal__input modal__input_name"
+          class="modal__input modal__input_name form__input"
           type="text"
+          minlength="2"
+          maxlength="40"
+          id="name-input"
           placeholder="Nombre"
         />
+        <span class="form__input-error name-input-error"></span>
         <input
           type="text"
           placeholder="Profesion"
-          class="modal__input modal__input_job"
+          required
+          minlength="2"
+          maxlength="200"
+          id="profesion-input"
+          class="modal__input modal__input_job form__input"
         />
+        <span class="form__input-error profesion-input-error"></span>
+
         <button class="modal__button" type="submit">Guardar</button>
       </form>
       <img
@@ -85,17 +95,23 @@
     </section>
     <section class="modal modal-place disabled">
       <h2 class="modal__title">Nuevo Lugar</h2>
-      <form class="modal__form">
+      <form class="modal__form form" novalidate>
         <input
-          class="modal__input modal__input_title"
+          class="modal__input modal__input_title form__input"
           type="text"
+          minlength="2"
+          maxlength="30"
           placeholder="Titulo"
+          id="title-input"
         />
+        <span class="form__input-error title-input-error"></span>
         <input
-          class="modal__input modal__input_url"
-          type="text"
+          class="modal__input modal__input_url form__input"
+          type="url"
           placeholder="Enlace a imagen"
+          id="url-input"
         />
+        <span class="form__input-error url-input-error"></span>
         <button class="modal__button" type="submit">Crear</button>
       </form>
       <img

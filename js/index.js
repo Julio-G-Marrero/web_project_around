@@ -143,6 +143,7 @@ modalProfile.addEventListener("submit", (e) => {
     nameInput.value = "";
     jobInput.value = "";
     showModal(modalProfile);
+    overlay.style.display = "none";
   }
 });
 
@@ -153,6 +154,7 @@ modalPlace.addEventListener("submit", (e) => {
     inputNameCardPlace.value = "";
     inputUrlCardPlace.value = "";
     showModal(modalPlace);
+    overlay.style.display = "none";
   }
 });
 

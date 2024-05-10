@@ -45,6 +45,7 @@
 }
 .places__title {
   margin: 0;
+  overflow: hidden;
   color: #000000;
   font-family: Inter;
   font-size: 24px;
@@ -52,6 +53,10 @@
   line-height: 29px;
   letter-spacing: 0em;
   text-align: left;
+}
+.profile__add-place {
+  width: 120px;
+  margin-top: 20px;
 }
 .places__like {
   width: 20px;

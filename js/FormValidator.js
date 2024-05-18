@@ -27,12 +27,10 @@ class FormValidator {
     let classInput = this._toValidate.classList.value;
     classInput = "." + classInput.replaceAll(" ", ".");
     const inputValue = document.querySelector(classInput);
-    console.log(typeModal);
 
     if (inputValue.value != "") {
       let classElement = "";
       if (typeModal == "modal-place") {
-        console.log("place");
         const card = new Card(
           inputNameCardPlace.value,
           inputUrlCardPlace.value,
@@ -46,14 +44,12 @@ class FormValidator {
         overlay.style.display = "none";
         return newCard;
       } else if (typeModal == "modal-perfil") {
-        console.log("perfil");
         if (this._toValidate.id == "name-input") {
           classElement =
             this._objConfig.contaierHtml.profileName.classList.value;
           classElement = document.querySelector("." + classElement);
           classElement.textContent = inputValue.value;
           inputValue.value = "";
-          showModal(modalProfile);
           overlay.style.display = "none";
         } else if (this._toValidate.id == "profesion-input") {
           classElement =

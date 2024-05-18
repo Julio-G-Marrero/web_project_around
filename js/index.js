@@ -1,3 +1,6 @@
+import { Card } from "./Card.js";
+import { showModal } from "./utils.js";
+
 const profileAddButton = document.querySelector(".profile__add-place");
 const profileEdit = document.querySelector(".profile__button");
 const modalProfile = document.querySelector(".modal-perfil");
@@ -43,119 +46,13 @@ const initialCards = [
 ];
 
 const containerCards = document.querySelector(".places__elements");
-const templateCard = document.querySelector("#cardElement").content;
 //Añadir card al cargar
 document.addEventListener("DOMContentLoaded", () => {
   initialCards.forEach((element) => {
-    const cardElement = templateCard
-      .querySelector(".places__element")
-      .cloneNode(true);
-    const cardTitle = cardElement.querySelector(".places__title");
-    const likeButton = cardElement.querySelector(".places__like");
-    const imgCard = cardElement.querySelector(".places__image");
-    const trashButton = cardElement.querySelector(".places__trash-icon");
-
-    imgCard.addEventListener("click", () => {
-      openImgModal(imgCard, cardTitle);
-    });
-    likeButton.addEventListener("click", (e) => {
-      likeButton.classList.toggle("like_active");
-    });
-    trashButton.addEventListener("click", function () {
-      const listItem = trashButton.closest(".places__element");
-      listItem.remove();
-    });
-    cardTitle.textContent = element.name;
-    imgCard.src = element.link;
-    imgCard.alt = element.name;
+    const card = new Card(element.name, element.link, "#cardElement");
+    const cardElement = card.createCard();
     containerCards.append(cardElement);
   });
-});
-
-//Crear card
-function createCard(title, urlImg) {
-  const cardElement = templateCard
-    .querySelector(".places__element")
-    .cloneNode(true);
-  const cardTitle = cardElement.querySelector(".places__title");
-  const likeButton = cardElement.querySelector(".places__like");
-  const trashButton = cardElement.querySelector(".places__trash-icon");
-  const imgCard = cardElement.querySelector(".places__image");
-
-  imgCard.src = urlImg;
-  imgCard.alt = title;
-  cardTitle.textContent = title;
-
-  imgCard.addEventListener("click", () => {
-    openImgModal(imgCard, cardTitle);
-  });
-  trashButton.addEventListener("click", function () {
-    const listItem = trashButton.closest(".places__element");
-    listItem.remove();
-  });
-  likeButton.addEventListener("click", (e) => {
-    likeButton.classList.toggle("like_active");
-  });
-
-  containerCards.prepend(cardElement);
-}
-
-//Modales
-function showModal(modal) {
-  modal.classList.toggle("disabled");
-  overlay.style.display = "block";
-}
-profileEdit.addEventListener("click", () => {
-  showModal(modalProfile);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-});
-modalClosePlace.addEventListener("click", () => {
-  showModal(modalPlace);
-  overlay.style.display = "none";
-});
-modalCloseProfile.addEventListener("click", () => {
-  showModal(modalProfile);
-  overlay.style.display = "none";
-});
-modalCloseImage.addEventListener("click", () => {
-  showModal(modalImage);
-  overlay.style.display = "none";
-});
-function openImgModal(img, title) {
-  const imgModal = document.querySelector(".modal-img__src");
-  const titleCard = document.querySelector(".modal-img__title");
-  imgModal.src = img.src;
-  titleCard.textContent = title.textContent;
-  showModal(modalImage);
-}
-
-profileAddButton.addEventListener("click", () => {
-  showModal(modalPlace);
-});
-
-//Modal Submit
-modalProfile.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (nameInput.value != "" && jobInput.value != "") {
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    nameInput.value = "";
-    jobInput.value = "";
-    showModal(modalProfile);
-    overlay.style.display = "none";
-  }
-});
-
-modalPlace.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (inputNameCardPlace.value != "" && inputUrlCardPlace.value != "") {
-    createCard(inputNameCardPlace.value, inputUrlCardPlace.value);
-    inputNameCardPlace.value = "";
-    inputUrlCardPlace.value = "";
-    showModal(modalPlace);
-    overlay.style.display = "none";
-  }
 });
 
 //validacion forms

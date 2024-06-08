@@ -1,5 +1,4 @@
 import { openModal } from "./utils.js";
-
 class Card {
   constructor(title, image, selector) {
     this._title = title;

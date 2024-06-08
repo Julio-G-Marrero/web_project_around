@@ -1,22 +1,17 @@
 import { Card } from "./Card.js";
-import { showModal } from "./utils.js";
+import { Section } from "./Section.js";
+import { User } from "./UserInfo.js";
 
-const profileAddButton = document.querySelector(".profile__add-place");
-const profileEdit = document.querySelector(".profile__button");
-const modalProfile = document.querySelector(".modal-perfil");
-const modalPlace = document.querySelector(".modal-place");
-const modalImage = document.querySelector(".modal-img");
-const modalCloseImage = document.querySelector(".modal-img__close");
-const modalCloseProfile = document.querySelector(".modal__close-perfil ");
-const modalClosePlace = document.querySelector(".modal__close-place ");
-const profileName = document.querySelector(".profile__name");
-const profileJob = document.querySelector(".profile__rol");
-const nameInput = modalProfile.querySelector(".modal__input_name");
-const jobInput = modalProfile.querySelector(".modal__input_job");
-const inputNameCardPlace = document.querySelector(".modal__input_title");
-const inputUrlCardPlace = document.querySelector(".modal__input_url");
-const likeButtons = document.querySelectorAll(".places__like");
 const overlay = document.querySelector(".overlay");
+var userName = document.querySelector(".profile__name");
+var userJob = document.querySelector(".profile__rol");
+const userObj = {
+  name: userName,
+  job: userJob,
+};
+const user = new User(userObj);
+userName.textContent = user.getUserInfo("name");
+userJob.textContent = user.getUserInfo("job");
 
 const initialCards = [
   {
@@ -45,15 +40,19 @@ const initialCards = [
   },
 ];
 
-const containerCards = document.querySelector(".places__elements");
 //Añadir card al cargar
-document.addEventListener("DOMContentLoaded", () => {
-  initialCards.forEach((element) => {
-    const card = new Card(element.name, element.link, "#cardElement");
-    const cardElement = card.createCard();
-    containerCards.append(cardElement);
-  });
-});
+const loadCards = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item.name, item.link, "#cardElement");
+      const cardElement = card.createCard();
+      loadCards.addItem(cardElement);
+    },
+  },
+  ".places__elements"
+);
+loadCards.renderer();
 
 //validacion forms
 const showInputError = (formElement, inputElement, errorMessage) => {

@@ -10,20 +10,20 @@
   <body class="page">
     <header class="header">
       <div class="header__logo">
-        <img src="./images/logo.svg" alt="logo" />
+        <img src="<%= require('./images/logo.svg')%>" alt="logo" />
       </div>
     </header>
     <section class="profile">
       <div class="profile__content">
         <div class="profile__avatar">
-          <img src="./images/Avatar.png" alt="Avatar img" />
+          <img src="<%= require('./images/Avatar.png')%>" alt="Avatar img" />
         </div>
         <div class="profile__info">
           <div class="profile__containter">
             <h1 class="profile__name">Jacques Cousteau</h1>
             <img
               class="profile__button"
-              src="./images/Edit_Button.svg"
+              src="<%= require('./images/Edit_Button.svg')%>"
               alt="edit button"
             />
           </div>
@@ -32,7 +32,7 @@
         <div class="profile__add">
           <img
             class="profile__add-place"
-            src="./images/Add_Button.png"
+            src="<%= require('./images/Add_Button.png')%>"
             alt="add buton img"
           />
         </div>
@@ -46,7 +46,7 @@
               <img class="places__image" src="/" alt="place image" />
               <img
                 class="places__trash-icon pointer"
-                src="./images/Trash.svg"
+                src="<%= require('./images/Trash.svg')%>"
                 alt="Trash svg"
               />
             </div>
@@ -54,7 +54,7 @@
               <h2 class="places__title"></h2>
               <img
                 class="places__like pointer"
-                src="./images/like.svg"
+                src="<%= require('./images/like.svg')%>"
                 alt="like svg"
               />
             </div>
@@ -89,7 +89,7 @@
       </form>
       <img
         class="modal__close modal__close-perfil"
-        src="./images/Close_Icon.png"
+        src="<%= require('./images/Close_Icon.png')%>"
         alt="close icon"
       />
     </section>
@@ -116,15 +116,19 @@
       </form>
       <img
         class="modal__close modal__close-place"
-        src="./images/Close_Icon.png"
+        src="<%= require('./images/Close_Icon.png')%>"
         alt="close icon"
       />
     </section>
     <section class="modal-img disabled">
-      <img class="modal-img__src" src="./images/place__2.png" alt="img" />
+      <img
+        class="modal-img__src"
+        src="<%= require('./images/place__2.png')%>"
+        alt="img"
+      />
       <img
         class="modal-img__close"
-        src="./images/Close_Icon.png"
+        src="<%= require('./images/Close_Icon.png')%>"
         alt="close icon"
       />
       <p class="modal-img__title"></p>

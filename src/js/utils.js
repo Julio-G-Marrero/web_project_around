@@ -1,4 +1,3 @@
-import { Form } from "./FormValidator.js";
 const modalPlace = document.querySelector(".modal-place");
 const modalImage = document.querySelector(".modal-img");
 const modalProfile = document.querySelector(".modal-perfil");

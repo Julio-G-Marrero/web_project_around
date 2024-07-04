@@ -100,3 +100,15 @@
 .modal__close:hover {
   cursor: pointer;
 }
+.modal-img-delete {
+  height: 150px;
+}
+.modal-img-delete__title {
+  margin-bottom: 15px;
+}
+.modal-img-delete__button {
+  cursor: pointer;
+}
+.modal-profile-img {
+  height: 250px;
+}

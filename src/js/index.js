@@ -1,6 +1,6 @@
 import { Card } from "./Card.js";
 import { Section } from "./Section.js";
-import { User } from "./UserInfo.js";
+import { User, idUser } from "./UserInfo.js";
 
 const overlay = document.querySelector(".overlay");
 var userName = document.querySelector(".profile__name");
@@ -13,46 +13,101 @@ const user = new User(userObj);
 userName.textContent = user.getUserInfo("name");
 userJob.textContent = user.getUserInfo("job");
 
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
+const initialCards = [];
+function setInitailCards(data) {
+  var isOwner = false;
 
-//Añadir card al cargar
-const loadCards = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item.name, item.link, "#cardElement");
-      const cardElement = card.createCard();
-      loadCards.addItem(cardElement);
-    },
+  for (var i = 0; i <= 5; i++) {
+    var likesCard = data[i].likes;
+    var isLiked = false;
+    likesCard.forEach((like) => {
+      if (like._id == idUser) {
+        isLiked = true;
+      }
+    });
+    if (data[i].owner._id == idUser) {
+      isOwner = true;
+    } else {
+      var isOwner = false;
+    }
+    initialCards.push({
+      name: data[i].name,
+      link: data[i].link,
+      likes: data[i].likes,
+      owner: isOwner,
+      idCard: data[i]._id,
+      isLiked: isLiked,
+    });
+  }
+}
+
+fetch("https://around.nomoreparties.co/v1/web_es_11/cards", {
+  headers: {
+    authorization: "2c6f935b-ffae-4102-85aa-95446d3a4fd7",
   },
-  ".places__elements"
-);
-loadCards.renderer();
+})
+  .then((response) => response.json())
+  .then((data) => setInitailCards(data))
+  .then(() => {
+    //Añadir card al cargar
+    const loadCards = new Section(
+      {
+        items: initialCards,
+        renderer: (item) => {
+          const card = new Card(
+            item.name,
+            item.link,
+            "#cardElement",
+            item.likes.length,
+            item.owner,
+            item.idCard
+          );
+          const cardElement = card.createCard();
+          if (item.isLiked) {
+            var styleLiked = cardElement.querySelector(".places__like");
+            styleLiked.classList.add("like_active");
+          }
+          loadCards.addItem(cardElement);
+        },
+      },
+      ".places__elements"
+    );
+
+    loadCards.renderer();
+  });
+
+//Cmbair img perfil
+var editProfileBtn = document.querySelector(".profile__avatar_edit-img");
+var editImgProfile = document.querySelector(".modal-profile-img");
+editProfileBtn.addEventListener("click", function () {
+  editImgProfile.classList.toggle("disabled");
+  const overlay = document.querySelector(".overlay");
+  const newUrl = document.querySelector("#url-img");
+  const btnGuardar = document.querySelector(".modal__button-img-Edit");
+  overlay.style.display = "block";
+
+  btnGuardar.addEventListener("click", function () {
+    fetch("https://around.nomoreparties.co/v1/web_es_11/users/me/avatar", {
+      method: "PATCH",
+      headers: {
+        authorization: "2c6f935b-ffae-4102-85aa-95446d3a4fd7",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: newUrl.value,
+      }),
+    }).then((res) => {
+      if (res.ok) {
+        const imgProfile = document.querySelector(".profile__avatar_img");
+        imgProfile.src = newUrl.value;
+        editImgProfile.classList.toggle("disabled");
+        overlay.style.display = "none";
+      } else {
+        alert("Algo salio mal ...");
+      }
+    });
+  });
+});
 
 //validacion forms
 const showInputError = (formElement, inputElement, errorMessage) => {

@@ -16,7 +16,16 @@
     <section class="profile">
       <div class="profile__content">
         <div class="profile__avatar">
-          <img src="<%= require('./images/Avatar.png')%>" alt="Avatar img" />
+          <img
+            src="<%= require('./images/Avatar.png')%>"
+            alt="Avatar img"
+            class="profile__avatar_img"
+          />
+          <img
+            src="<%= require('./images/editProfile.png')%>"
+            alt="edit icon"
+            class="profile__avatar_edit-img"
+          />
         </div>
         <div class="profile__info">
           <div class="profile__containter">
@@ -52,14 +61,32 @@
             </div>
             <div class="places__info">
               <h2 class="places__title"></h2>
-              <img
-                class="places__like pointer"
-                src="<%= require('./images/like.svg')%>"
-                alt="like svg"
-              />
+              <div class="places__image-container-likes">
+                <button class="places__like">
+                  <img
+                    class="pointer"
+                    src="<%= require('./images/like.svg')%>"
+                    alt="like svg"
+                  />
+                  <p class="places__image_likes places__likes"></p>
+                </button>
+              </div>
             </div>
           </div>
         </template>
+      </div>
+      <div class="modal modal-img-delete disabled">
+        <h2 class="modal__title modal-img-delete__title">¿Estas seguro/a?</h2>
+        <form class="modal__form form form__imgDelete" novalidate>
+          <input type="text" name="idCard" class="disabled" />
+          <button
+            class="modal__button modal-img-delete__button idCard"
+            type="submit"
+            id="idCard"
+          >
+            Si
+          </button>
+        </form>
       </div>
     </main>
     <section class="modal modal-perfil disabled">
@@ -120,6 +147,25 @@
         alt="close icon"
       />
     </section>
+    <section class="modal modal-profile-img disabled">
+      <h2 class="modal__title">Cambiar foto de perfil</h2>
+      <form class="modal__form form" novalidate>
+        <input
+          class="modal__input modal__input_url-img"
+          type="text"
+          id="url-img"
+          placeholder="Url"
+        />
+        <button class="modal__button modal__button-img-Edit" type="submit">
+          Guardar
+        </button>
+      </form>
+      <img
+        class="modal__close modal__close-place"
+        src="<%= require('./images/Close_Icon.png')%>"
+        alt="close icon"
+      />
+    </section>
     <section class="modal-img disabled">
       <img
         class="modal-img__src"
@@ -133,6 +179,7 @@
       />
       <p class="modal-img__title"></p>
     </section>
+
     <div class="overlay"></div>
     <script type="module" src="./js/Card.js"></script>
     <script type="module" src="./js/FormValidator.js"></script>

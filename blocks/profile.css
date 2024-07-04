@@ -76,3 +76,28 @@
 .profile__add-place:hover {
   cursor: pointer;
 }
+img.profile__avatar_img {
+  width: 77%;
+  border-radius: 70%;
+  height: 110%;
+  object-fit: cover;
+  margin-left: 20px;
+}
+.profile__avatar {
+  position: relative;
+}
+.profile__avatar_edit-img {
+  position: absolute;
+  z-index: 1;
+  width: 26px;
+  right: 40%;
+  top: 40%;
+  display: none;
+}
+.profile__avatar:hover > .profile__avatar_edit-img {
+  display: block;
+  cursor: pointer;
+}
+.profile__avatar:hover > .profile__avatar_img {
+  opacity: 0.3;
+}

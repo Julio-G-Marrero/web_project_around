@@ -14,7 +14,18 @@
     align-items: center;
   }
 }
-
+p.places__image_likes {
+  color: black;
+  font-weight: bolder;
+  margin: 0;
+  font-size: 15px;
+  font-family: Inter;
+}
+.places__image-container-likes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .places__element {
   max-width: 280px;
   width: 100%;
@@ -72,4 +83,13 @@
 }
 .places__image:hover {
   cursor: pointer;
+}
+.places__like {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 0;
+}
+.places__image-container-likes {
+  margin-top: -15px;
 }

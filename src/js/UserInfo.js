@@ -1,6 +1,6 @@
 var userName = document.querySelector(".profile__name");
 var userJob = document.querySelector(".profile__rol");
-var userAvatar = document.querySelector(".profile__avatar_img");
+var userAvatar = document.querySelector(".profile__avatar-img");
 var idUser = 0;
 class UserInfo {
   constructor(objElements) {

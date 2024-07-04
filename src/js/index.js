@@ -77,7 +77,7 @@ fetch("https://around.nomoreparties.co/v1/web_es_11/cards", {
   });
 
 //Cmbair img perfil
-var editProfileBtn = document.querySelector(".profile__avatar_edit-img");
+var editProfileBtn = document.querySelector(".profile__avatar-edit-img");
 var editImgProfile = document.querySelector(".modal-profile-img");
 editProfileBtn.addEventListener("click", function () {
   editImgProfile.classList.toggle("disabled");
@@ -98,7 +98,7 @@ editProfileBtn.addEventListener("click", function () {
       }),
     }).then((res) => {
       if (res.ok) {
-        const imgProfile = document.querySelector(".profile__avatar_img");
+        const imgProfile = document.querySelector(".profile__avatar-img");
         imgProfile.src = newUrl.value;
         editImgProfile.classList.toggle("disabled");
         overlay.style.display = "none";

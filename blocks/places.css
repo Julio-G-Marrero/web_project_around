@@ -25,6 +25,7 @@ p.places__image_likes {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: -15px;
 }
 .places__element {
   max-width: 280px;
@@ -72,6 +73,10 @@ p.places__image_likes {
 .places__like {
   width: 20px;
   height: 20px;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  border: 0;
 }
 .pointer {
   cursor: pointer;
@@ -83,13 +88,4 @@ p.places__image_likes {
 }
 .places__image:hover {
   cursor: pointer;
-}
-.places__like {
-  margin: 0;
-  padding: 0;
-  background-color: white;
-  border: 0;
-}
-.places__image-container-likes {
-  margin-top: -15px;
 }

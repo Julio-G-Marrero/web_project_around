@@ -5,6 +5,9 @@ const overlay = document.querySelector(".overlay");
 const profileEdit = document.querySelector(".profile__button");
 const modalClosePlace = document.querySelector(".modal__close-place ");
 const modalCloseProfile = document.querySelector(".modal__close-perfil ");
+const modalCloseProfileImg = document.querySelector(
+  ".modal__close-imgProfile "
+);
 const modalCloseImage = document.querySelector(".modal-img__close");
 const profileAddButton = document.querySelector(".profile__add-place");
 const nameInput = modalProfile.querySelector(".modal__input_name");
@@ -36,6 +39,10 @@ modalClosePlace.addEventListener("click", () => {
   overlay.style.display = "none";
 });
 modalCloseProfile.addEventListener("click", () => {
+  showModal(modalProfile);
+  overlay.style.display = "none";
+});
+modalCloseProfileImg.addEventListener("click", () => {
   showModal(modalProfile);
   overlay.style.display = "none";
 });

@@ -1,7 +1,7 @@
-var userName = document.querySelector(".profile__name");
-var userJob = document.querySelector(".profile__rol");
-var userAvatar = document.querySelector(".profile__avatar-img");
-var idUser = 0;
+let userName = document.querySelector(".profile__name");
+let userJob = document.querySelector(".profile__rol");
+let userAvatar = document.querySelector(".profile__avatar-img");
+let idUser = 0;
 class UserInfo {
   constructor(objElements) {
     this._objElements = objElements;
@@ -23,6 +23,7 @@ class UserInfo {
     }
   }
 }
+
 fetch("https://around.nomoreparties.co/v1/web_es_11/users/me", {
   headers: {
     authorization: "2c6f935b-ffae-4102-85aa-95446d3a4fd7",

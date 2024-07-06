@@ -3,8 +3,8 @@ import { Section } from "./Section.js";
 import { User, idUser } from "./UserInfo.js";
 
 const overlay = document.querySelector(".overlay");
-var userName = document.querySelector(".profile__name");
-var userJob = document.querySelector(".profile__rol");
+let userName = document.querySelector(".profile__name");
+let userJob = document.querySelector(".profile__rol");
 const userObj = {
   name: userName,
   job: userJob,
@@ -14,71 +14,72 @@ userName.textContent = user.getUserInfo("name");
 userJob.textContent = user.getUserInfo("job");
 
 const initialCards = [];
-function setInitailCards(data) {
-  var isOwner = false;
+setTimeout(function () {
+  fetch("https://around.nomoreparties.co/v1/web_es_11/cards", {
+    headers: {
+      authorization: "2c6f935b-ffae-4102-85aa-95446d3a4fd7",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let isOwner = false;
 
-  for (var i = 0; i <= 5; i++) {
-    var likesCard = data[i].likes;
-    var isLiked = false;
-    likesCard.forEach((like) => {
-      if (like._id == idUser) {
-        isLiked = true;
-      }
-    });
-    if (data[i].owner._id == idUser) {
-      isOwner = true;
-    } else {
-      var isOwner = false;
-    }
-    initialCards.push({
-      name: data[i].name,
-      link: data[i].link,
-      likes: data[i].likes,
-      owner: isOwner,
-      idCard: data[i]._id,
-      isLiked: isLiked,
-    });
-  }
-}
-
-fetch("https://around.nomoreparties.co/v1/web_es_11/cards", {
-  headers: {
-    authorization: "2c6f935b-ffae-4102-85aa-95446d3a4fd7",
-  },
-})
-  .then((response) => response.json())
-  .then((data) => setInitailCards(data))
-  .then(() => {
-    //Añadir card al cargar
-    const loadCards = new Section(
-      {
-        items: initialCards,
-        renderer: (item) => {
-          const card = new Card(
-            item.name,
-            item.link,
-            "#cardElement",
-            item.likes.length,
-            item.owner,
-            item.idCard
-          );
-          const cardElement = card.createCard();
-          if (item.isLiked) {
-            var styleLiked = cardElement.querySelector(".places__like");
-            styleLiked.classList.add("like_active");
+      for (let i = 0; i <= 5; i++) {
+        let likesCard = data[i].likes;
+        let isLiked = false;
+        likesCard.forEach((like) => {
+          if (like._id == idUser) {
+            isLiked = true;
           }
-          loadCards.addItem(cardElement);
+        });
+        if (data[i].owner._id == idUser) {
+          isOwner = true;
+        } else {
+          let isOwner = false;
+        }
+        initialCards.push({
+          name: data[i].name,
+          link: data[i].link,
+          likes: data[i].likes,
+          owner: isOwner,
+          idCard: data[i]._id,
+          isLiked: isLiked,
+        });
+      }
+    })
+    .then(() => {
+      //Añadir card al cargar
+      const loadCards = new Section(
+        {
+          items: initialCards,
+          renderer: (item) => {
+            const card = new Card(
+              item.name,
+              item.link,
+              "#cardElement",
+              item.likes.length,
+              item.owner,
+              item.idCard
+            );
+            const cardElement = card.createCard();
+            if (item.isLiked) {
+              let styleLiked = cardElement.querySelector(".places__like");
+              styleLiked.classList.add("like_active");
+            }
+            loadCards.addItem(cardElement);
+            console.log("2.-Render card");
+          },
         },
-      },
-      ".places__elements"
-    );
+        ".places__elements"
+      );
 
-    loadCards.renderer();
-  });
+      loadCards.renderer();
+    });
+}, 200);
 
 //Cmbair img perfil
-var editProfileBtn = document.querySelector(".profile__avatar-edit-img");
-var editImgProfile = document.querySelector(".modal-profile-img");
+let editProfileBtn = document.querySelector(".profile__avatar-edit-img");
+let editImgProfile = document.querySelector(".modal-profile-img");
 editProfileBtn.addEventListener("click", function () {
   editImgProfile.classList.toggle("disabled");
   const overlay = document.querySelector(".overlay");

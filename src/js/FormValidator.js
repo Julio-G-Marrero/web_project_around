@@ -2,8 +2,8 @@ import { PopupWithForm } from "./PopupWithForm.js";
 import { Card } from "./Card.js";
 import { User } from "./UserInfo.js";
 
-var userName = "";
-var userJob = "";
+let userName = "";
+let userJob = "";
 
 fetch("https://around.nomoreparties.co/v1/web_es_11/users/me", {
   headers: {
@@ -59,9 +59,15 @@ class FormValidator {
             name: inputNameCardPlace.value,
             link: inputUrlCardPlace.value,
           }),
-        }).then((res) => {
-          console.log(res);
-        });
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const idTrash = document.querySelector(".places__trash-icon");
+            const idLike = document.querySelector(".places__like");
+            idTrash.id = data._id;
+            idLike.value = data._id;
+          });
+
         const card = new Card(
           inputNameCardPlace.value,
           inputUrlCardPlace.value,

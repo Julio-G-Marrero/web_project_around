@@ -21,9 +21,6 @@ class Card {
     imgCard.addEventListener("click", () => {
       openModal(this._image, this._title);
     });
-    likeButton.addEventListener("click", (e) => {
-      likeButton.classList.toggle("like_active");
-    });
     trashButton.addEventListener("click", function (e) {
       const idCardElement = e.target.id;
       const modalTrashImg = document.querySelector(".modal-img-delete");
@@ -53,9 +50,10 @@ class Card {
     });
 
     likeButton.addEventListener("click", function (e) {
-      var idCardElement = e.target.parentElement.value;
+      likeButton.classList.toggle("like_active");
+
+      let idCardElement = e.target.parentElement.value;
       if (likeButton.classList[1]) {
-        console.log("no le dio");
         fetch(
           `https://around.nomoreparties.co/v1/web_es_11/cards/likes/${idCardElement}`,
           {
@@ -68,13 +66,16 @@ class Card {
         )
           .then((res) => res.json())
           .then((data) => {
-            var likesCountText = e.target.nextSibling.nextSibling;
-            likesCountText.textContent = data.likes.length;
-            console.log(data.likes.length);
+            console.log(data);
+            console.log(e.target.parentElement);
+            let likesCountText = e.target.nextSibling.nextSibling;
+            if (data.likes.length > 0) {
+              likesCountText.textContent = data.likes.length;
+            } else {
+              likesCountText.textContent = 0;
+            }
           });
       } else {
-        console.log("si le dio");
-
         fetch(
           `https://around.nomoreparties.co/v1/web_es_11/cards/likes/${idCardElement}`,
           {
@@ -87,9 +88,15 @@ class Card {
         )
           .then((res) => res.json())
           .then((data) => {
-            var likesCountText = e.target.nextSibling.nextSibling;
-            likesCountText.textContent = data.likes.length;
-            console.log(data.likes.length);
+            console.log(data);
+            console.log(e.target.parentElement);
+
+            let likesCountText = e.target.nextSibling.nextSibling;
+            if (data.likes.length > 0) {
+              likesCountText.textContent = data.likes.length;
+            } else {
+              likesCountText.textContent = 0;
+            }
           });
       }
     });

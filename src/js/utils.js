@@ -1,6 +1,8 @@
 const modalPlace = document.querySelector(".modal-place");
 const modalImage = document.querySelector(".modal-img");
 const modalProfile = document.querySelector(".modal-perfil");
+const modalProfileImg = document.querySelector(".modal-profile-img");
+
 const overlay = document.querySelector(".overlay");
 const profileEdit = document.querySelector(".profile__button");
 const modalClosePlace = document.querySelector(".modal__close-place ");
@@ -43,7 +45,7 @@ modalCloseProfile.addEventListener("click", () => {
   overlay.style.display = "none";
 });
 modalCloseProfileImg.addEventListener("click", () => {
-  showModal(modalProfile);
+  showModal(modalProfileImg);
   overlay.style.display = "none";
 });
 modalCloseImage.addEventListener("click", () => {
